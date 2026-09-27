@@ -59,7 +59,7 @@ ALGORITMA:
       ENDIF
    ENDIF
 
-   nominal_diskon <- total_awal * persen_diskon
+   nominal_diskon <- total_awal × persen_diskon
    total_bayar <- total_awal - nominal_diskon
 
    OUTPUT (nominal_diskon)
@@ -71,23 +71,40 @@ ALGORITMA:
 
 Kasus A: is_member = true, total_awal = 250000, jumlah_buku = 4
 
-| No | keterangan | is_member | jumlah_buku | total_awal | (hasil) cek WHILE | persen_diskon | nominal_diskon | total_bayar | 
+| No | keterangan proses | is_member | jumlah_buku | total_awal | hasil validasi | persen_diskon | nominal_diskon | total_bayar | 
 | -- | ---------- | --------- | ----------- | ---------- | ----------------- | ------------- | -------------- | ----------- |
 | 1. | input status member pelanggan | true | - | - | - | - | - | - |
 | 2. | input jumlah buku | true | 4 | - | - | - | - | - |
 | 3. | input total belanja awal | true | 4 | 250000 | - | - | - | - |
 | 4. | mengecek WHILE: 250000 < 0 false, 4 < 1 false -> loop tidak dijalankan | true | 4 | 250000 | false | - | - | - |
 | 5. | is_member = true -> diskon dasar | true | 4 | 250000 | - | 0.10| - | - |
-| 6. | mengecek IF: 250000 >= 200000 true AND 4 >= 3 true -> mendapat tambahan diskon 0.05 | true | 4 | 250000 | - | 0.15 | - | - |
+| 6. | mengecek IF: 250000 >= 200000 true AND 4 >= 3 true -> mendapat tambahan diskon 0.05 dari 0.10 | true | 4 | 250000 | - | 0.15 | - | - |
 | 7. | perhitungan nominal_diskon | true | 4 | 250000 | - | 0.15 | 37500 | - |
 | 8. | perhitungan total_bayar | true | 4 | 250000 | - | 0.15 | 37500 | 212500 |
-| 9. | output nominal_diskon 37500 total_bayar 212500 | true | 4 | 250000 | - | 0.15 | 37500 | 212500 |
+| 9. | output nominal_diskon 37500, total_bayar 212500 | true | 4 | 250000 | - | 0.15 | 37500 | 212500 |
 
 Kasus B: is_member = False, total_awal = 350000, jumlah_buku = 2
 
-| No | keterangan | is_member | jumlah_buku | total_awal | (hasil) cek WHILE | persen_diskon | nominal_diskon | total_bayar | 
+| No | keterangan proses | is_member | jumlah_buku | total_awal | hasil validasi | persen_diskon | nominal_diskon | total_bayar | 
 | -- | ---------- | --------- | ----------- | ---------- | ----------------- | ------------- | -------------- | ----------- |
-| input is_member | 
+| 1. | input status member pelanggan | false | - | - | -| - | - | - |
+| 2. | input jumlah buku | false | 2 | - | - | - | - | - |
+| 3. | input total belanja awal | false | 2 | 350000 | - | - | - | - |
+| 4. | mengecek WHILE: 350000 < 0 false, 2 < 1 false -> loop tidak dijalankan | false | 2 | 350000 | false | - | - | - |
+| 5. | is_member = false -> tidak dapat diskon dasar | false | 2 | 350000 | - | - | - | - |
+| 6. | mengecek IF: 350000 >= 300000 true -> mendapat diskon 0.05 | false | 2 | 350000 | - | 0.05 | - | - |
+| 7. | perhitungan nominal_diskon | false | 2 | 350000 | - | 0.05 | 17500 | - |
+| 8. | perhitungan total_bayar | false | 2 | 350000 | - | 0.05 | 17500 | 332500 |
+| 9. | output nominal_diskon 17500, total_bayar 332500 | false | 2 | 350000 | - | 0.05 | 17500 | 332500 |
+
+Kasus C: Input awal total_awal = -50000 (salah), lalu dikoreksi menjadi 100000, is_member = False, jumlah_buku = 1
+
+| No | keterangan proses | is_member | jumlah_buku | total_awal | hasil validasi | persen_diskon | nominal_diskon | total_bayar | 
+| -- | ---------- | --------- | ----------- | ---------- | ----------------- | ------------- | -------------- | ----------- |
+| 1. | input stataus member pelanggan | false | - | - | - | - | - | - |
+| 2. | input jumlah buku | false | 1 | - | - | - | - | - |
+| 3. | input total belanja awal | false | 1 | -50000 | - | - | - | - |
+| 4. | 
 
 
 
