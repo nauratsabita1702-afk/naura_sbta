@@ -3,24 +3,24 @@
 
 ### 1. Variabel dan tipe data yang digunakan
 
-No  Variabel   Tipe Data  Keterangan
-1.  is_member  Boolean    status member pelanggan (input)
-2.  jumlah_buku Integer   banyak buku yang dibeli (input) 
-3.  total_awal  Real      total belanjan sebelum diptong diskon (input) 
-4.  persen_diskon Real    besar presentase diskon (proses) 
-5.  nominal_diskon Real   besar diskon dalam rupiah (output) 
-6.  total_bayar  Real  total akhir uang yang harus dibayar (output) 
+No  Variabel Tipe Data Keterangan
+1.  `is_member` Boolean (status member pelanggan (input))
+2.  `jumlah_buku` Integer (banyak buku yang dibeli (input)) 
+3.  `total_awal` Real (total belanjan sebelum diptong diskon (input)) 
+4.  `persen_diskon` Real (besar presentase diskon (proses)) 
+5.  `nominal_diskon` Real (besar diskon dalam rupiah (output)) 
+6.  `total_bayar` Real (total akhir uang yang harus dibayar (output))
 
 ### 2. Struktur kontrol yang digunakan
 
 1. ### Sequence:
-   mulai dari urutan input (is_member, jumlah_buku, total_awal),perhitungan nominal_diskon, perhitungan total_bayar, dan menampilkan output
+   mulai dari urutan input (`is_member`, `jumlah_buku`, `total_awal`), perhitungan `nominal_diskon`, perhitungan `total_bayar`, dan menampilkan output
 2. ### Selection (percabangan):
-   - Mengecek is_member
+   - Mengecek `is_member`
    - is_member = true : mengecek total_awal >= 200000 AND jumlah_buku >= 3 jika terpenuhi mendapat diskon 15% dari total_awal diskon 10%
    - is_member = false : mengecek total_awal >= 300000 jika terpenuhi mendapat diskon 5%
 3. ### Iteration (perulangan):
-   pada WHILE akan mengecek total_awal < 0 ATAU jumlah_buku < 1 jika salah satu benar akan mengulang terus sampai total_awal >=0 DAN jumlah_buku >=1
+   pada WHILE akan mengecek total_awal < 0 ATAU jumlah_buku < 1 jika salah satu benar  akan mengulang terus sampai total_awal >=0 AND umlah_buku  >=1
 
 ## B. Pseudocode
 
@@ -71,7 +71,7 @@ ALGORITMA:
 
 Kasus A: is_member = true, total_awal = 250000, jumlah_buku = 4
 
-| No | keterangan proses | is_member | jumlah_buku | total_awal | hasil validasi | persen_diskon | nominal_diskon | total_bayar | 
+| No | keterangan proses | `is_member` | `jumlah_buku `| `total_awal `| hasil validasi | `persen_diskon` | `nominal_diskon` | `total_bayar` | 
 | -- | ---------- | --------- | ----------- | ---------- | ----------------- | ------------- | -------------- | ----------- |
 | 1. | input status member pelanggan | true | - | - | - | - | - | - |
 | 2. | input jumlah buku | true | 4 | - | - | - | - | - |
@@ -83,9 +83,16 @@ Kasus A: is_member = true, total_awal = 250000, jumlah_buku = 4
 | 8. | perhitungan total_bayar | true | 4 | 250000 | - | 0.15 | 37500 | 212500 |
 | 9. | output nominal_diskon 37500, total_bayar 212500 | true | 4 | 250000 | - | 0.15 | 37500 | 212500 |
 
+```
+Hasil akhir kasus A
+      persentase diskon = 0.10
+      nominal diskon = RP37.500
+      total awal = Rp212.500
+```
+
 Kasus B: is_member = False, total_awal = 350000, jumlah_buku = 2
 
-| No | keterangan proses | is_member | jumlah_buku | total_awal | hasil validasi | persen_diskon | nominal_diskon | total_bayar | 
+| No | keterangan proses | `is_member` | `jumlah_buku` | `total_awal` | hasil validasi | `persen_diskon` | `nominal_diskon` | `total_bayar` | 
 | -- | ---------- | --------- | ----------- | ---------- | ----------------- | ------------- | -------------- | ----------- |
 | 1. | input status member pelanggan | false | - | - | -| - | - | - |
 | 2. | input jumlah buku | false | 2 | - | - | - | - | - |
@@ -97,15 +104,36 @@ Kasus B: is_member = False, total_awal = 350000, jumlah_buku = 2
 | 8. | perhitungan total_bayar | false | 2 | 350000 | - | 0.05 | 17500 | 332500 |
 | 9. | output nominal_diskon 17500, total_bayar 332500 | false | 2 | 350000 | - | 0.05 | 17500 | 332500 |
 
+```
+Hasil akhir kasus B
+      persentase diskon = 0.05
+      nominal diskon = RP17.500
+      total awal = Rp332.500
+```
+
 Kasus C: Input awal total_awal = -50000 (salah), lalu dikoreksi menjadi 100000, is_member = False, jumlah_buku = 1
 
-| No | keterangan proses | is_member | jumlah_buku | total_awal | hasil validasi | persen_diskon | nominal_diskon | total_bayar | 
+| No | keterangan proses | `is_member` | `jumlah_buku` | `total_awal` | hasil validasi | `persen_diskon` | `nominal_diskon` | `total_bayar` | 
 | -- | ---------- | --------- | ----------- | ---------- | ----------------- | ------------- | -------------- | ----------- |
 | 1. | input stataus member pelanggan | false | - | - | - | - | - | - |
 | 2. | input jumlah buku | false | 1 | - | - | - | - | - |
 | 3. | input total belanja awal | false | 1 | -50000 | - | - | - | - |
-| 4. | 
+| 4. | mengecek WHILE pada perulangan pertama: -50000 < 0 true -> 1 < 1 false -> loop dijalankan | false | 1 | -50000 | true | - | - | - |
+| 5. | data tidak valid | false | 1 | -50000 | - | - | - | - |
+| 6. | input kembali jumlah buku | false | 1 | -50000 | - | - | - | - |
+| 7. | input kembali total awal | false | 1 | 100000 | - | - | - | - |
+| 8. | mengecek WHILE pada perulangan kedua: 100000 < 0 false, 1 < 1 false -> loop diberhentikan | false | 1 | 100000 | false | - | - | - |
+| 9. | mengecek IF: 100000 >= 300000 false -> tidak mendapat diskon | false | 1 | 100000 | - | 0.0 | - | - |
+| 10. | perhitungan nominal_diskon | false | 1 | 100000 | - | 0.0 | 0 | - |
+| 11. | perhitungan total_bayar | false | 1 | 100000 | - | 0.0 | 0 | 100000 |
+| 12. | output nominal_diskon 0, total_bayar 100000 | false | 1 | 100000 | - |0.0 |0 | 100000 |
 
+```
+Hasil akhir kasus C
+      persentase diskon = 0.0
+      nominal diskon = RP0
+      total awal = Rp100.000
+```
 
 
 
